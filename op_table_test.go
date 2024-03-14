@@ -71,7 +71,7 @@ func TestFindOpcodeByValidMnemonic(t *testing.T) {
 	table := NewOpTable()
 	for _, tt := range tests {
 		opcode, ok := table.Find(tt.mnemonic)
-		if ok != true || opcode != tt.expectedOpcode {
+		if !ok || opcode != tt.expectedOpcode {
 			t.Errorf("Find(%s) = %d, %t; want %d",
 				tt.mnemonic, opcode, ok, tt.expectedOpcode)
 		}
@@ -81,7 +81,7 @@ func TestFindOpcodeByValidMnemonic(t *testing.T) {
 func TestFindOpcodeByInvalidMnemonic(t *testing.T) {
 	table := NewOpTable()
 	_, ok := table.Find("UNKNOWN")
-	if ok != false {
+	if ok {
 		t.Errorf("Find(UNKNOWN) = _, %t; want false", ok)
 	}
 }

@@ -1,0 +1,21 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-Isrc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wpedantic",
+      "-std=c11",
+      "-g",
+      "-o",
+      "./bin/op_table_test",
+      "./tests/op_table_test.c"
+    ],
+    "directory": "/Users/jtr860830/Workspaces/ncnu/sp",
+    "file": "/Users/jtr860830/Workspaces/ncnu/sp/tests/op_table_test.c",
+    "output": "/Users/jtr860830/Workspaces/ncnu/sp/bin/op_table_test"
+  }
+]

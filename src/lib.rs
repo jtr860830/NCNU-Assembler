@@ -41,4 +41,21 @@ impl SymbolTable {
         
         true
     }
+
+    pub fn insert(&mut self, label: String, address: Address) -> () {}
+
+    pub fn remove(&mut self, label: &str) -> () {}
+
+    pub fn find(&self, label: &str) -> () {}
+
+    pub fn update(&mut self, label: &str, address: Address) -> () {}
+
+    pub fn print(&self) {
+        for (label, symbol) in &self.table {
+            match symbol.address {
+                Address::Unallocated => println!("{}: Unallocated", label),
+                Address::Allocated(addr) => println!("{}: Allocated at {}", label, addr),
+            }
+        }
+    }
 }

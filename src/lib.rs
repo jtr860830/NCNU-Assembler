@@ -42,13 +42,21 @@ impl SymbolTable {
         true
     }
 
-    pub fn insert(&mut self, label: String, address: Address) -> () {}
+    pub fn insert(&mut self, label: String, address: Address) {
+        todo!("Implement insert");
+    }
 
-    pub fn remove(&mut self, label: &str) -> () {}
+    pub fn remove(&mut self, label: &str) {
+        todo!("Implement remove");
+    }
 
-    pub fn find(&self, label: &str) -> () {}
+    pub fn find(&self, label: &str) {
+        todo!("Implement find");
+    }
 
-    pub fn update(&mut self, label: &str, address: Address) -> () {}
+    pub fn update(&mut self, label: &str, address: Address) {
+        todo!("Implement update");
+    }
 
     pub fn print(&self) {
         for (label, symbol) in &self.table {

@@ -42,7 +42,7 @@ impl SymbolTable {
         self.table.get(label)
     }
 
-    pub fn push_waiting_list(&mut self, label: &str, address: u32) -> Result<(), String> {
+    pub fn push_to_waiting_list(&mut self, label: &str, address: u32) -> Result<(), String> {
         if !self.is_label_exists(label) {
             return Err("Label does not exist".to_string());
         }

@@ -43,39 +43,29 @@ impl SymbolTable {
     }
 
     pub fn push_to_waiting_list(&mut self, label: &str, address: u32) -> Result<(), String> {
-        if !self.is_label_exists(label) {
-            return Err("Label does not exist".to_string());
-        }
-
-        let symbol = self.table.get_mut(label).unwrap();
-        match symbol.address {
-            Address::Unallocated => {
-                symbol.waiting_list.push(address);
+        match self.table.get_mut(label) {
+            Some(symbol) => match symbol.address {
+                Address::Unallocated => {
+                    symbol.waiting_list.push(address);
+                    Ok(())
+                },
+                Address::Allocated(_) => Err("Label already allocated".to_string()),
             },
-            Address::Allocated(_) => {
-                return Err("Label already allocated".to_string());
-            },
+            None => Err("Label does not exist".to_string()),
         }
-
-        Ok(())
     }
 
     pub fn allocate(&mut self, label: &str, address: u32) -> Result<(), String> {
-        if !self.is_label_exists(label) {
-            return Err("Label does not exist".to_string());
-        }
-
-        let symbol = self.table.get_mut(label).unwrap();
-        match symbol.address {
-            Address::Unallocated => {
-                symbol.address = Address::Allocated(address);
+        match self.table.get_mut(label) {
+            Some(symbol) => match symbol.address {
+                Address::Unallocated => {
+                    symbol.address = Address::Allocated(address);
+                    Ok(())
+                },
+                Address::Allocated(_) => Err("Label already allocated".to_string()),
             },
-            Address::Allocated(_) => {
-                return Err("Label already allocated".to_string());
-            },
+            None => Err("Label does not exist".to_string()),
         }
-
-        Ok(())
     }
 
     pub fn print(&self) {

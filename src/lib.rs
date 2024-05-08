@@ -75,3 +75,9 @@ impl OpTable {
         self.table.get(mnemonic)
     }
 }
+
+impl Default for OpTable {
+    fn default() -> Self {
+        OpTable::new()
+    }
+}

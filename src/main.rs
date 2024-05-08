@@ -2,7 +2,7 @@ use sic::OpTable;
 use std::io::{self, Write};
 
 fn main() {
-    let op_table = OpTable::new();
+    let op_table = OpTable::default();
     let mut input = String::new();
 
     // helper message
